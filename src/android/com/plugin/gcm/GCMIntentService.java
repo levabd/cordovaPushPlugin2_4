@@ -9,6 +9,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -19,6 +21,8 @@ import com.google.android.gcm.GCMBaseIntentService;
 public class GCMIntentService extends GCMBaseIntentService {
 
 	private static final String TAG = "GCMIntentService";
+    private String package_name;
+    private Resources resources;
 	
 	public GCMIntentService() {
 		super("GCMIntentService");
@@ -97,11 +101,29 @@ public class GCMIntentService extends GCMBaseIntentService {
 				defaults = Integer.parseInt(extras.getString("defaults"));
 			} catch (NumberFormatException e) {}
 		}
-		
-		NotificationCompat.Builder mBuilder =
+
+        int smallIcon = 0;
+
+        package_name = getApplication().getPackageName();
+        resources = getApplication().getResources();
+        Log.i("PUSHPLUGIN", "PREPARE NOTIFICATION MOTHER FUCKER!!!");
+        // For new versions, get a silhouette icon
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            smallIcon = context.getResources().getIdentifier("notification_icon", "drawable", context.getPackageName());
+            Log.i("PUSHPLUGIN", "Lolypop: " + smallIcon);
+
+        }
+        Log.i("PUSHPLUGIN", "END PREPARE NOTIFICATION MOTHER FUCKER!!!!");
+        // If no icon is found, use the app icon
+        if (smallIcon == 0) {
+            smallIcon = context.getApplicationInfo().icon;
+        }
+
+
+        NotificationCompat.Builder mBuilder =
 			new NotificationCompat.Builder(context)
 				.setDefaults(defaults)
-				.setSmallIcon(context.getApplicationInfo().icon)
+                .setSmallIcon(smallIcon)
 				.setWhen(System.currentTimeMillis())
 				.setContentTitle(extras.getString("title"))
 				.setTicker(extras.getString("title"))

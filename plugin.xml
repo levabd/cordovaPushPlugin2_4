@@ -58,8 +58,20 @@
 			<service android:name="com.plugin.gcm.GCMIntentService" />
 		</config-file>
 
-		<source-file src="src/android/libs/gcm.jar" target-dir="libs/" />
-		<source-file src="src/android/com/plugin/gcm/CordovaGCMBroadcastReceiver.java" target-dir="src/com/plugin/gcm/" />
+        <source-file src="src/android/res/drawable/notification_icon.png" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable-hdpi/notification_icon.png" target-dir="res/drawable-hdpi" />
+        <source-file src="src/android/res/drawable-hdpi-v11/notification_icon.png" target-dir="res/drawable-hdpi-v11" />
+        <source-file src="src/android/res/drawable-mdpi/notification_icon.png" target-dir="res/drawable-mdpi" />
+        <source-file src="src/android/res/drawable-mdpi-v11/notification_icon.png" target-dir="res/drawable-mdpi-v11" />
+        <source-file src="src/android/res/drawable-xhdpi/notification_icon.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/drawable-xhdpi-v11/notification_icon.png" target-dir="res/drawable-xhdpi-v11" />
+        <source-file src="src/android/res/drawable-xxhdpi/notification_icon.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/drawable-xxhdpi-v11/notification_icon.png" target-dir="res/drawable-xxhdpi-v11" />
+        <source-file src="src/android/res/drawable-xxxhdpi/notification_icon.png" target-dir="res/drawable-xxxhdpi" />
+        <source-file src="src/android/res/drawable-xxxhdpi-v11/notification_icon.png" target-dir="res/drawable-xxxhdpi-v11" />
+
+        <source-file src="src/android/libs/gcm.jar" target-dir="libs/" />
+        <source-file src="src/android/com/plugin/gcm/CordovaGCMBroadcastReceiver.java" target-dir="src/com/plugin/gcm/" />
 		<source-file src="src/android/com/plugin/gcm/GCMIntentService.java" target-dir="src/com/plugin/gcm/" />
 		<source-file src="src/android/com/plugin/gcm/PushHandlerActivity.java" target-dir="src/com/plugin/gcm/" />
 		<source-file src="src/android/com/plugin/gcm/PushPlugin.java" target-dir="src/com/plugin/gcm/" />
